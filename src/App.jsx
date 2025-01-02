@@ -1,4 +1,5 @@
 import Banner from "./components/Banner";
+import CategoryBox from "./components/CategoryBox";
 import Navbar from "./components/Navbar";
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
     <>
       <Navbar />
       <Banner />
+      <CategoryBox/>
     </>
   );
 }

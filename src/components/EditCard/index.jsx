@@ -1,14 +1,8 @@
 import { useState } from "react";
 import "./styles.css";
 
-const EditCard = () => {
-  const [formData, setFormData] = useState({
-    title: "O que é Javascript?",
-    category: "frontend",
-    image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fapps...",
-    video: "https://www.youtube.com/url?sa=i&url=https%3A%2F%2Fapps...",
-    description: "lorem ipsum blah blah blah",
-  });
+const EditCard = ({ card, onSave, onCancel }) => {
+  const [formData, setFormData] = useState(card);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,24 +11,16 @@ const EditCard = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Edited Card Data:", formData);
-  };
-
-  const handleReset = () => {
-    setFormData({
-      title: "",
-      category: "",
-      image: "",
-      video: "",
-      description: "",
-    });
+    onSave(formData);
   };
 
   return (
     <div className="edit-card-container">
       <div className="edit-card-header">
-        <h1>Editar Card:</h1>
-        <button className="close-button">&times;</button>
+        <h1>Editar Card</h1>
+        <button className="close-button" onClick={onCancel}>
+          &times;
+        </button>
       </div>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -95,9 +81,9 @@ const EditCard = () => {
         </div>
 
         <div className="form-actions">
-          <button type="submit">Guardar</button>
-          <button type="button" onClick={handleReset}>
-            Limpar
+          <button type="submit">Salvar</button>
+          <button type="button" onClick={onCancel}>
+            Cancelar
           </button>
         </div>
       </form>

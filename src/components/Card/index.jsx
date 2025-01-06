@@ -1,29 +1,29 @@
 import "./styles.css";
-import CardImage from "../../imgs/card-image.svg";
-import TrashCan from "../../imgs/trash-can.svg";
 
-const Card = () => {
+const Card = ({ video, onEdit, onDelete }) => {
+  const handleEdit = () => {
+    onEdit(video); 
+
+  const handleDelete = () => {
+    onDelete(video.id); 
+
   return (
     <div className="card">
       <div className="card-image-container">
-        <img
-          src={CardImage}
-          alt="Desenvolvedora Front-End"
-          className="card-image"
-        />
+        <img className="card-image" src={video.image} alt={video.title} />
       </div>
       <div className="card-actions">
-        <button className="delete-btn">
-          <span className="icon">
-            <img src={TrashCan} alt="" />
-          </span>{" "}
-          DELETAR
+        <button className="edit-btn" onClick={handleEdit}>
+          <img src="../../imgs/edit-icon.svg" alt="Editar" className="icon" />{" "}
+          Editar
         </button>
-        <button className="edit-btn">
-          <span className="icon">✏️</span> EDITAR
+        <button className="delete-btn" onClick={handleDelete}>
+          <img src="../../imgs/trash-icon.svg" alt="Excluir" className="icon" />{" "}
+          Excluir
         </button>
       </div>
     </div>
   );
 };
+
 export default Card;

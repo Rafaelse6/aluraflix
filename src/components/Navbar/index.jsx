@@ -1,15 +1,21 @@
+import { Link } from "react-router-dom";
 import logo from "../../imgs/logo.svg";
 import "./styles.css";
+
 const Navbar = () => {
   return (
     <nav className="main-nav">
       <img className="logo-aluraflix" src={logo} alt="Logo Aluraflix" />
       <ul>
         <li>
-          <button>Home</button>
+          <Link className="nav-button" to="/">
+            Home
+          </Link>
         </li>
         <li>
-          <button>Novo Vídeo</button>
+          <Link className="nav-button" to="/novo-video">
+            Novo Vídeo
+          </Link>
         </li>
       </ul>
     </nav>

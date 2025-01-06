@@ -1,22 +1,17 @@
-import Banner from "./components/Banner";
-import CardList from "./components/CardList";
-import CategoryBox from "./components/CategoryBox";
-import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
-
-// import EditCard from "./components/EditCard";
-// import NewVideo from "./components/NewVideoForm";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./components/Home"; 
+import NewVideo from "./components/NewVideoForm";
+import EditCard from "./components/EditCard"; 
 
 function App() {
   return (
-    <>
-      <Navbar />
-      <Banner />
-      <CategoryBox />
-      <CardList />
-      <Footer /> 
-      {/* <EditCard /> */}
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} /> {/* Página inicial */}
+        <Route path="/novo-video" element={<NewVideo />} />
+        <Route path="/editar-video/:id" element={<EditCard />} />
+      </Routes>
+    </Router>
   );
 }
 

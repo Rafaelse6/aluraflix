@@ -1,9 +1,10 @@
 import { useState } from "react";
-import "./styles.css";
+import { useNavigate } from "react-router-dom";
 import FormNavbar from "../FormNavbar";
 import Footer from "../Footer";
+import "./styles.css";
 
-const NewVideo = () => {
+const NewVideo = ({ onAddVideo }) => {
   const [formData, setFormData] = useState({
     title: "",
     category: "",
@@ -12,6 +13,8 @@ const NewVideo = () => {
     description: "",
   });
 
+  const navigate = useNavigate(); // Correção aqui para usar useNavigate
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -19,7 +22,8 @@ const NewVideo = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Data:", formData);
+    onAddVideo(formData);
+    navigate("/"); // Correção aqui para usar navigate em vez de Navigate
   };
 
   const handleReset = () => {
